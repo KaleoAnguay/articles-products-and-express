@@ -1,0 +1,12 @@
+<form name="edit" id="edit" action="/products/{{id}}" method="PUT">
+  <label for="name">Name</label>
+  <input type="text" id="name" name= "name" value={{name}}>
+
+  <label for="price">Price</label>
+  <input type="text" id="price" name= "price" value={{price}}>
+
+  <label for="inventory">Inventory</label>
+  <input type="text" id="inventory" name="inventory" value={{inventory}}>
+
+  <input id= "edit" type="submit" value="Save Changes">
+</form>

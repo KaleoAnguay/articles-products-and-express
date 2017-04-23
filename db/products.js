@@ -1,16 +1,33 @@
-
+/*jshint esversion: 6*/
 let everything = [];
-let productsId = 0;
+let productsId = 1;
 
-const addPro = (pro, callback) => {
-  pro.price = parseFloat(pro.price);
-  pro.inventory = parseFloat(pro.inventory);
-  pro.id = productsId++;
-  everything.push(pro);
+const add = (req, callback) => {
+  req.price = parseFloat(req.price);
+  req.inventory = parseFloat(req.inventory);
+  req.id = productsId++;
+  everything.push(req);
   callback(null, everything);
 };
 
+const find = (req, callback) => {
+  for(let i = 0; i < everything.length; i++) {
+    if(parseInt(req.id) === everything[i].id) {
+      return callback(null, everything[i]);
+    }
+  }
+};
+
+const edit = (req, callback) => {
+  if(req.body){
+    everything = req.body;
+    console.log(everything);
+  }
+};
+
 module.exports  = {
-  addPro: addPro,
+  edit: edit,
+  find: find,
+  add: add,
   everything: everything
 };
