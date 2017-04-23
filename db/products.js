@@ -10,9 +10,9 @@ const add = (req, callback) => {
   callback(null, everything);
 };
 
-const find = (req, callback) => {
+const find = (id, callback) => {
   for(let i = 0; i < everything.length; i++) {
-    if(parseInt(req.id) === everything[i].id) {
+    if(parseInt(id) === everything[i].id) {
       return callback(null, everything[i]);
     }
   }

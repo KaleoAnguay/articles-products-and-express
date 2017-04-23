@@ -43,9 +43,7 @@ router.route('/:id')
 })
 
 .get((req,res) => {
-  console.log('is it working');
-  productsDb.find(req.params, (err, pro) => {
-    console.log(pro);
+  productsDb.find(req.params.id, (err, pro) => {
     if(err) {
       throw new Error(err);
     }
@@ -55,7 +53,17 @@ router.route('/:id')
   });
 });
 
-// router.route('/:id/edit');
+router.route('/:id/edit')
+.get((req,res) => {
+  console.log(req.params.id);
+  productsDb.find(req.params.id, (err, pro) => {
+    if(err) {
+      throw new Error(err);
+    }
+    console.log(typeof pro);
+    res.render('./products/edit', pro);
+  });
+});
 
 
 
